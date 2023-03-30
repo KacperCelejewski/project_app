@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="author" content="Kacper Celejewski & Wiktor Podwin">
     <meta name="description" content="........">
+   
     <title>
-        Home Page
+        {% block title %}
+
+        {% endblock %}
     </title>
+    
 <link rel="stylesheet" href= "main.css" type="text/css">
 </head>
 
@@ -20,7 +24,13 @@
     <input type="text" id="username" name="username"><br>
     <label for="password">Password: </label><br>
     <input type="text" id="password" name="password"><br>
-    <button>Login</button>
+    {% block button %}
+    <button>
+        
+        Login
+        
+    </button>
+    {% endblock %}
     <p>You are not regitered? Click <a href=""> here </a> to sign up! </p>
     <hr/>
     &copy;&nbsp;Kacper Celejewski, Wiktor Podwin 
