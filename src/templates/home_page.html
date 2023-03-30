@@ -1,41 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Kacper Celejewski & Wiktor Podwin">
-    <meta name="description" content="........">
-   
-    <title>
-        {% block title %}
-
-        {% endblock %}
-    </title>
-    
-<link rel="stylesheet" href= "main.css" type="text/css">
-</head>
-
-<body>
-    <h1> Projects</h1>
-    <hr>
-    <p>Make your life better</p>
-    <label for="username">Username: </label>
-    <br>
-    <input type="text" id="username" name="username"><br>
-    <label for="password">Password: </label><br>
-    <input type="text" id="password" name="password"><br>
-    {% block button %}
-    <button>
-        
-        Login
-        
-    </button>
+{% extends 'base.html' %}
+{% block title %} 
+Home Page
+{% endblock %}
+    {% block con %} 
+    Home page
     {% endblock %}
-    <p>You are not regitered? Click <a href=""> here </a> to sign up! </p>
-    <hr/>
-    &copy;&nbsp;Kacper Celejewski, Wiktor Podwin 
-    <address>Wroclaw, Poland</address>
-    <hr/>
+
 </body>
 
 </html>

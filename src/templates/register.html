@@ -1,9 +1,32 @@
-{% extends 'home_page.html' %}
+{% extends 'base.html' %}
 {% block title %}
     Sign up!
 {% endblock %}
-{% block button %}
-    <button>
-    Sign up!
-    </button>
+{% block con %}
+<h1> Projects</h1>
+<h2>Sign up!</h2>
+<hr>
+<p>Make your life better</p>
+<label for="username">Username: </label>
+<br>
+<input type="text" id="username" name="username"><br>
+
+<label for="password">Password: </label><br>
+<input type="text" id="Password" name="Password"><br>
+
+<label for="E-mail">E-mail: </label>
+<br>
+<input type="text" id="E-mail" name="E-mail"><br>
+
+<label for="name">Name: </label><br>
+<input type="text" id="name" name="name"><br>
+
+
+<label for="surrname">Surrname: </label><br>
+<input type="text" id="surrname" name="surrname"><br>
+
+<br>
+<button>
+Sign up!
+</button>
 {% endblock %}
