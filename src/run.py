@@ -1,5 +1,6 @@
-from project import app
+import project
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    project.app.run(debug=True)
+    project.app.app_context()
