@@ -3,11 +3,23 @@
     Sign up!
 {% endblock %}
 {% block con %}
+    <h1>Registration</h1>
+{% endblock %}
+{% block container %}
+<head>
+    <style>
+        .container {
+      text-align: center;
+    }
+    .form-control {
+      padding: 6px 160px;
+      text-align: center;
+    }   
+    </style>
+</head>
 <body class = "text-ceter">
-<h1> Projects</h1>
-<h2>Sign up!</h2>
-<hr>
 <p>Make your life better</p>
+<hr/>
 
 
 
@@ -18,21 +30,28 @@
             Please Create your Account
             </h1>
     {{form.username.label()}}
+    <br>
     {{form.username(class="form-control", placeholder="User Name")}}
     <br>
     {{form.email.label()}}
+    <br>
     {{form.email(class="form-control", placeholder="E-mai adress: ")}}
     <br>
     {{form.password1.label()}}
+    <br>
     {{form.password1(class="form-control", placeholder="Password")}}
     <br>
     {{form.password2.label()}}
+    <br>
     {{form.password2(class="form-control", placeholder="Confirm password: ")}}
+    <br>
+    <br>
 
     {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
 
-</form>
+    </form>
 </div>
-
-
 {% endblock %}
+
+
+

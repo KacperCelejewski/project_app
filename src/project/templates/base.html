@@ -11,26 +11,90 @@
 
         {% endblock %}
     </title>
-
+    <style>
+        .nav{
+          background-color: #333;
+        }
+        .nav_list{
+          list-style-type: none;
+          margin: 0px;
+          padding: 0px;
+          display: flex;
+        }
+        .nav_element{
+          float: right;
+  
+        }
+  
+        .nav_link{
+          display: block;
+          color: white;
+          text-align:center;
+          padding: 20px 6px;
+          text-decoration: none;
+        }
+  
+        .nav_link:hover{
+          background-color: black;
+        }
+  
+        div.logo {
+          float: right;
+        }
+  
+        .text{
+          color:blanchedalmond;
+          padding: 0px 30px;
+  
+        }
+        
+        .owners {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
 </head>
 
 <body>
     {% block con %}
 
     {% endblock %}
-    <hr/>
-    &copy;&nbsp;Kacper Celejewski, Wiktor Podwin 
-    <address>Wroclaw, Poland</address>
+    <nav class="nav">
+        <ul class="nav_list">
+            <li class="logo">
+              <div class="logo">
+                <h4 class="text">Project App&reg;</h4>
+              </div>
+            </li>
+            <li class="nav_element">
+                <a class="nav_link" href="{{ url_for('home_page')}}">Home</a>
+            </li>
+            <li class="nav_element">
+                <a class="nav_link" href="{{ url_for('about_page')}}">About</a>
+            </li>
+            <li class="nav_element">
+                <a class="nav_link" href="{{ url_for('login_page')}}">Login</a>
+            </li>
+            <li class="nav_element">
+                <a class="nav_link" href="{{ url_for('register_page')}}">Register</a>
+            </li>
+    </nav>
+    {% block container %}
+
+    {% endblock %}
+
+    <div class = 'box'>   
+        <p class = "owners"> &copy;&nbsp;Kacper Celejewski, Wiktor Podwin </p>
+        <address class = 'owners'>Wroclaw, Poland</address>
+    </div>
     <hr/>
 </body>
-><style>html{
-    font-size:  22px;
-    background-color: #333;
-    color: whitesmoke;
-}
-
-a{
-    color:#ADD8E6;
-}
+<style>
+    body {
+      background-color: #212121;
+      color: white;
+    }
+  </style>
 </style>
 </html>
