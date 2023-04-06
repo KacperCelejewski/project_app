@@ -3,18 +3,26 @@
     Sign up!
 {% endblock %}
 {% block con %}
-    <h1>Registration</h1>
+    <h1>Register</h1>
 {% endblock %}
 {% block container %}
 <head>
     <style>
         .container {
       text-align: center;
+      background-color: #443a3a;
+      border-radius: 15px;
+      width: 50%; 
+        margin: 0 auto;
     }
     .form-control {
       padding: 6px 160px;
       text-align: center;
+      border-radius: 11px;
+      box-shadow: 0px,8px,24px 0 rgb(148, 130, 130);
+      
     }   
+
     </style>
 </head>
 <body class = "text-ceter">
@@ -26,9 +34,11 @@
 
 <div class = "container">
     <form method="POST" class="form-register" style="color:white">
+        {{form.hidden_tag()}}
         <h1 class="h3 mb-3 font-weight-normal">
             Please Create your Account
             </h1>
+    <div class="form">
     {{form.username.label()}}
     <br>
     {{form.username(class="form-control", placeholder="User Name")}}
@@ -41,16 +51,23 @@
     <br>
     {{form.password1(class="form-control", placeholder="Password")}}
     <br>
-    {{form.password2.label()}}
+    
+    {{form.surrname.label()}}
     <br>
-    {{form.password2(class="form-control", placeholder="Confirm password: ")}}
+    {{form.surrname(class="form-control", placeholder="Surrname: ")}}
+    <br>
+    {{form.name.label()}}
+    <br>
+    {{form.name(class="form-control", placeholder="Name: ")}}
     <br>
     <br>
-
     {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
-
+    <br><br>
     </form>
 </div>
+
+</div>
+
 {% endblock %}
 
 

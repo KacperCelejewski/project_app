@@ -8,8 +8,8 @@ class User(db.Model):
     surrname = db.Column(db.String(length=40), nullable=False, unique=True)
     email = db.Column(db.String(length=40), nullable=False, unique=True)
     username = db.Column(db.String(length=40), nullable=False, unique=True)
-    password_hash = db.Column(db.String(length=60), nullable=False)
+    password = db.Column(db.String(length=60), nullable=False)
    #  projects=db.relationship('Project'),backref='owened_user', lazy=True)
 
     def __repr__(self):
-        return f"Name: {self.name}, Surrname: {self.surrname}, Email: {self.email}. Username: {self.username}, Passwod: {self.password} "
+        return f"Name: {self.name}, Surrname: {self.surrname}, Email: {self.email}. Username: {self.username}, Password: {self.password} "
