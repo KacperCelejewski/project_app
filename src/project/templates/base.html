@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +13,7 @@
         {% endblock %}
     </title>
     <style>
+      
         .nav{
       background-color: rgb(80, 73, 73);
       text-align: center;
@@ -56,6 +58,7 @@
 </head>
 
 <body>
+
     {% block con %}
 
     {% endblock %}
@@ -67,7 +70,7 @@
               </div>
             </li>
             <li class="nav_element">
-                <a class="nav_link" href="{{ url_for('home_page')}}">Home</a>
+                <a class="nav_link" href="{{ url_for('projects_page')}}">Your Projects</a>
             </li>
             <li class="nav_element">
                 <a class="nav_link" href="{{ url_for('about_page')}}">About</a>
