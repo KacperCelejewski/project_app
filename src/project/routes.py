@@ -25,13 +25,16 @@ def register_page():
     #check if user clicked on submit button
     if form.validate_on_submit():
         #read data from input fields to create User object
+        
         user_to_create= User(username = form.username.data,
                             email = form.email.data,
-                            password= form.password1.data,
+                            password =  form.password1.data,
                             surrname=form.surrname.data,
                             name=form.name.data)
-        db.session.add(user_to_create)
-        db.session.commit()
+        with app.app_context():
+            db.create_all()
+            db.session.add(user_to_create)
+            db.session.commit()
         return redirect(url_for("home_page"))
     if form.errors != {}: #if there are not erroers from the validations
         for err_msg in form.errors.values():

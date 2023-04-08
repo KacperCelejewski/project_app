@@ -1,6 +1,6 @@
 import project
-
+from project import db, app
 
 if __name__ == "__main__":
-    project.app.run(debug=True)
-    project.app.app_context().push()
+    with app.app_context():
+        project.app.run(debug=True)
