@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
@@ -11,7 +11,7 @@ app.config.update(dict(
     WTF_CSRF_SECRET_KEY="09b3b371eb6546919f68bd28y"
 ))
 db = SQLAlchemy(app)
-
+bcrypt=Bcrypt(app)
 
 
 

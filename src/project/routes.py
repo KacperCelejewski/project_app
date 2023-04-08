@@ -28,7 +28,7 @@ def register_page():
         
         user_to_create= User(username = form.username.data,
                             email = form.email.data,
-                            password =  form.password1.data,
+                            plain_password =  form.password1.data,
                             surrname=form.surrname.data,
                             name=form.name.data)
         with app.app_context():
