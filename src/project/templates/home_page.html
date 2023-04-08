@@ -2,9 +2,24 @@
 {% block title %} 
 Home Page
 {% endblock %}
-{% block con %} 
-<div style="text-align: center;">
+{% block con %}
+<style>
+    .log_out_but{
+        
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+</style> 
+<div style="display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+">
     <h1>Home page</h1>
+    <ui class="log_out_but">
+        Welcome, {{current_user.username}}
+        <a href="{{ url_for('logout_page') }}">Logout</a>
 </div>
 {% endblock %}
 

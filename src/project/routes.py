@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, flash, get_flashed_message
 from project.model import User
 from project.forms import Register_Form, Loginform
 from project import db
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 
 @app.route("/home")
@@ -73,3 +73,10 @@ def register_page():
 @app.route("/Your Projects")
 def projects_page():
     return render_template("users_project.html")
+
+
+@app.route("/logout")
+def logout_page():
+    logout_user()
+    flash("You have been logged out!", category="info")
+    return redirect(url_for("login_page"))
