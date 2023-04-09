@@ -2,16 +2,31 @@
 {% block title %}
     Your Projects
 {% endblock %}
+{%block page%}
 
+<style>
+
+
+</style>
+<h1 style="display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+padding: 10px;
+margin:10px
+">Your Projects</h1>
+
+{%endblock%}
 {% block container %}
 
-    <button class="button">
+    <button class="buttone">
         Create new project
     </button>
-    <h2>Your projects:</h2>
+    <button></button>
+    
     <ul>
         <li>
-            edljikner
+            edl
         </li>
         <li>
             nedledf
@@ -19,13 +34,24 @@
     </ul>
 
     <style>
-        .button{
+        .buttone{
             border: 1px solid black;
             font-size: 26px;
             margin-top: 20px;
             margin-bottom: 10px;
-            margin-left: 10px;
+            margin-left: 20px;
             background-color: #cdbdbd;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-radius:7px ;
+            display: flex;
+            opacity: 1;
+            transition: opacity 0.15s ease-in-out;
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        .buttone:hover{
+            background-color: rgba(1,1,0,0);
+            opacity: 0.8;
         }
     </style>
 

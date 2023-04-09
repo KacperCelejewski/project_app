@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
 {% block title %} 
 Home Page
 {% endblock %}
 {% block con %}
+
 <style>
     .log_out_but{
         
@@ -16,13 +17,12 @@ align-items: center;
 justify-content: center;
 position: relative;
 ">
-    <h1>Home page</h1>
-    <ui class="log_out_but">
-        Welcome, {{current_user.username}}
-        <a href="{{ url_for('logout_page') }}">Logout</a>
+    <h1 style="display:flex;text-align: center ;">Home page</h1>
 </div>
+
 {% endblock %}
 
 {% block container %}
     <h3></h3>
 {% endblock %}
+

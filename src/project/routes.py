@@ -1,9 +1,15 @@
 from project import app
 from flask import render_template, redirect, url_for, flash, get_flashed_messages
 from project.model import User
-from project.forms import Register_Form, Loginform
+from project.forms import Register_Form, Loginform, create_project
 from project import db
 from flask_login import login_user, logout_user
+from flask import request
+from project.projects import Project
+
+
+# from project.projects import Project
+import pendulum
 
 
 @app.route("/home")
@@ -72,6 +78,7 @@ def register_page():
 
 @app.route("/Your Projects")
 def projects_page():
+
     return render_template("users_project.html")
 
 
@@ -80,3 +87,22 @@ def logout_page():
     logout_user()
     flash("You have been logged out!", category="info")
     return redirect(url_for("login_page"))
+
+
+@app.route("/New Project", methods=["GET", "POST"])
+def n_project():
+    form = create_project()
+    if form.validate_on_submit():
+        project_to_create = Project(
+            years=form.years.data,
+            months=form.months.data,
+            days=form.days.data,
+            name=form.name.data,
+            member=form.member.data,
+        )
+        deadline = project_to_create.deadline()
+
+    return render_template(
+        "new_project.html",
+        form=form,
+    )

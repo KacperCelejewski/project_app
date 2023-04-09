@@ -1,0 +1,52 @@
+{% extends 'users_project.html' %}
+
+
+
+
+{% block container %}
+
+<style>
+    .formy{
+    width: 50%;
+    margin: 0 auto;
+}
+</style>
+<form method="POST" class="form-register" style="color:white">
+    <div class="formy">
+        
+        {{form.name.label()}}
+        <br>
+        {{form.name(class="form-control", placeholder="Name")}}
+        <br>
+        <hr width="50%" color="white" size="5">
+        <h2>How much time do tu need to finish your project?</h2>
+        <br>
+        {{form.years.label()}}
+        <br>
+        {{form.years(class="form-control", placeholder="Years: ")}}
+        <br>
+        {{form.months.label()}}
+        <br>
+        {{form.months(class="form-control", placeholder="Months: ")}}
+        <br>
+        {{form.days.label()}}
+        <br>
+        {{form.days(class="form-control", placeholder="Days: ")}}
+        <br>
+        
+        
+        <hr width="50%" color="white" size="5">
+        {{form.member.label()}}
+        <br>
+        {{form.member(class="form-control", placeholder="Member:  ")}}
+        {{ form.submit(class="btn btn-lg  btn-primary submit") }}
+        <br>
+    </div>
+ 
+        
+
+</form>
+
+
+
+{% endblock %}
