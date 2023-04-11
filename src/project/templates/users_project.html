@@ -18,20 +18,16 @@ margin:10px
 
 {%endblock%}
 {% block container %}
+<a href="{{ url_for('n_project') }}" class="buttone">Create new project</a>
 
+<h2>Projects list: </h2>
+{%for project in projects%}
+<ul>
     <button class="buttone">
-        Create new project
+    {{project}}
     </button>
-    <button></button>
-    
-    <ul>
-        <li>
-            edl
-        </li>
-        <li>
-            nedledf
-        </li>
-    </ul>
+</ul>
+{%endfor%}
 
     <style>
         .buttone{
@@ -47,11 +43,26 @@ margin:10px
             opacity: 1;
             transition: opacity 0.15s ease-in-out;
             transition: background-color 0.15s ease-in-out;
+            width: fit-content;
+            padding: 5px;
         }
-
-        .buttone:hover{
-            background-color: rgba(1,1,0,0);
+a{
+    color: rgb(57, 52, 52);
+    
+}
+a:hover{
+    background-color:  rgb(57, 52, 52);
             opacity: 0.8;
+            color: #cdbdbd;
+            text-decoration: none;
+
+}
+.buttone:hover{
+            background-color:  rgb(57, 52, 52);
+            opacity: 0.8;
+            color: #cdbdbd;
+            text-decoration: none;
+            
         }
     </style>
 

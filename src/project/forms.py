@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField, IntegerField, HiddenField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from project.model import User
 
@@ -46,9 +46,5 @@ class Loginform(FlaskForm):
 
 
 class create_project(FlaskForm):
-    name = StringField(label="name", validators=[DataRequired()])
-    years = IntegerField(label="years", validators=[DataRequired()])
-    months = IntegerField(label="months", validators=[DataRequired()])
-    days = IntegerField(label="days", validators=[DataRequired()])
-    member = StringField(label="member", validators=[DataRequired()])
-    submit = SubmitField(label="Apply")
+    title = StringField(label="title")
+    submite = SubmitField(label="Apply")
