@@ -18,10 +18,22 @@ class Register_Form(FlaskForm):
         email = User.query.filter_by(email=email_to_check.data).first()
         if email:
             raise ValidationError("Email already exists! Please try a different email")
+        
+    def validate_password(self, password1):
+        self.password1 = password1
+    
+        if not any(c.islower() for c in password1.data):
+            raise ValidationError('Password must contain at least one lowercase letter.')
+    
+        if not any(c.isupper() for c in password1.data):
+            raise ValidationError('Password must contain at least one uppercase letter.')
+    
+        if not any(c.isdigit() for c in password1.data):
+            raise ValidationError('Password must contain at least one digit.')
 
-    username = StringField(
-        label="Username: ", validators=[Length(min=2, max=30), DataRequired()]
-    )
+        
+
+    username = StringField(label="Username: ", validators=[Length(min=2, max=30), DataRequired()])
     surrname = StringField(
         label="Surrname: ", validators=[Length(min=2, max=30), DataRequired()]
     )
@@ -30,7 +42,7 @@ class Register_Form(FlaskForm):
     )
     email = StringField(label="E-mail adress: ", validators=[Email(), DataRequired()])
     password1 = PasswordField(
-        label="Password: ", validators=[Length(min=6), DataRequired()]
+        label="Password: ", validators=[Length(min=6), DataRequired(), validate_password]
     )
     password2 = PasswordField(
         label="Confirm password: ", validators=[EqualTo("password1"), DataRequired()]

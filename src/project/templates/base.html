@@ -82,7 +82,7 @@
 {%block page%}
 {%endblock%}
 
-<div style="display: flex;
+<!-- <div style="display: flex;
 align-items: end;
 justify-content: end;
 position: relative;
@@ -92,7 +92,7 @@ margin:10px
 
         <ui class="log_out_but">
         <a href="{{ url_for('logout_page') }}">Logout</a>
-</div>
+</div> -->
 
 {%endif%}
     {% block con %}
@@ -106,14 +106,30 @@ margin:10px
               </div>
             </li>
             <li class="nav_element">
+              <a class="nav_link" href="{{ url_for('home_page')}}">Home</a>
+          </li>
+            <li class="nav_element">
                 <a class="nav_link" href="{{ url_for('projects_page')}}">Your Projects</a>
             </li>
             <li class="nav_element">
                 <a class="nav_link" href="{{ url_for('about_page')}}">About</a>
             </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav_element">
+              <a class="nav_link">Welcome: {{ current_user.username }}</a>
+            </li>
+            <li class="nav_element">
+              <a class="nav_link" href="{{ url_for('logout_page') }}">Logout</a>
+            </li>
+            {% else %}
             <li class="nav_element">
                 <a class="nav_link" href="{{ url_for('login_page')}}">Login</a>
             </li>
+            <li class="nav_element">
+              <a class="nav_link" href="{{ url_for('register_page')}}">Register</a>
+          </li>
+            {% endif %}
+            
 
             </li>
             </ul>
