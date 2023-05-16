@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField, HiddenField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
-from project.model import User
+from project.model import User, Project
+import re
 
 
 class Register_Form(FlaskForm):
@@ -30,15 +31,23 @@ class Register_Form(FlaskForm):
     
         if not any(c.isdigit() for c in password1.data):
             raise ValidationError('Password must contain at least one digit.')
+        
+    def validate_name(self, field):
+        if not re.match(r'^[A-Z][a-z]*$', field.data):
+            raise ValidationError('In Name one capital letter, only at the beginning')
+        
+    def validate_surrname(self, field2):
+        if not re.match(r'^[A-Z][a-z]*$', field2.data):
+            raise ValidationError('In Surrname one capital letter, only at the beginning')
 
         
 
     username = StringField(label="Username: ", validators=[Length(min=2, max=30), DataRequired()])
     surrname = StringField(
-        label="Surrname: ", validators=[Length(min=2, max=30), DataRequired()]
+        label="Surrname: ", validators=[Length(min=2, max=30), DataRequired(), validate_surrname]
     )
     name = StringField(
-        label="name: ", validators=[Length(min=2, max=30), DataRequired()]
+        label="name: ", validators=[Length(min=2, max=30), DataRequired(), validate_name]
     )
     email = StringField(label="E-mail adress: ", validators=[Email(), DataRequired()])
     password1 = PasswordField(
@@ -51,12 +60,25 @@ class Register_Form(FlaskForm):
     submit = SubmitField(label="Confirm your Account")
 
 
-class Loginform(FlaskForm):
+class LoginForm(FlaskForm):
     username = StringField(label="Username", validators=[DataRequired()])
     password = PasswordField(label="Password", validators=[DataRequired()])
     submit = SubmitField(label="Sign in")
 
 
 class create_project(FlaskForm):
-    title = StringField(label="title")
+
+    def validate_title(self, title_to_check,):
+        project = Project.query.filter_by(title=title_to_check.data).first()
+        if project:
+            raise ValidationError("You need to take another title, because this topic already exist!")
+        
+    def process_title(self, field):
+        if not re.match(r'[A-Z]{1}[0-9a-zA-Z\s]*$', field.data):
+            raise ValidationError('One capital letter, only at the beginning of the title.')
+
+    title = StringField(label="Title", validators=[Length(min= 2, max=30), DataRequired(), validate_title, process_title])
     submite = SubmitField(label="Apply")
+
+    
+        

@@ -43,7 +43,7 @@ class Project(db.Model):
     __tablename__ = "Project"
     id = db.Column(db.Integer(), primary_key=True)
     title = db.Column(db.String(length=40), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user_id = db.Column(db.Integer(), db.ForeignKey("user.id"))
     # deadline = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self) -> str:

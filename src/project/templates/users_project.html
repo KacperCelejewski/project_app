@@ -1,69 +1,66 @@
-{% extends 'base.html' %}
-{% block title %}
-    Your Projects
-{% endblock %}
-{%block page%}
+{% extends 'base.html' %} {% block title %} Your Projects {% endblock %} {%block
+page%}
+
+<style></style>
+<h1
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+  "
+>
+  Your Projects
+</h1>
+
+{%endblock%} {% block container %}
+<a href="{{ url_for('new_project_page') }}" class="buttone"
+  >Create new project</a
+>
+
+<h2>Projects list:</h2>
+<!-- {{ projects }} -->
+
+{% for project in projects %}
+<ul>
+  <button class="buttone">{{ project.title }}</button>
+</ul>
+{% endfor %}
 
 <style>
-
-
-</style>
-<h1 style="display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-padding: 10px;
-margin:10px
-">Your Projects</h1>
-
-{%endblock%}
-{% block container %}
-<a href="{{ url_for('n_project') }}" class="buttone">Create new project</a>
-
-<h2>Projects list: </h2>
-{%for project in projects%}
-<ul>
-    <button class="buttone">
-    {{project}}
-    </button>
-</ul>
-{%endfor%}
-
-    <style>
-        .buttone{
-            border: 1px solid black;
-            font-size: 26px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            background-color: #cdbdbd;
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            border-radius:7px ;
-            display: flex;
-            opacity: 1;
-            transition: opacity 0.15s ease-in-out;
-            transition: background-color 0.15s ease-in-out;
-            width: fit-content;
-            padding: 5px;
-        }
-a{
+  .buttone {
+    border: 1px solid black;
+    font-size: 26px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    background-color: #cdbdbd;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 7px;
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
+    width: fit-content;
+    padding: 5px;
+  }
+  a {
     color: rgb(57, 52, 52);
-    
-}
-a:hover{
-    background-color:  rgb(57, 52, 52);
-            opacity: 0.8;
-            color: #cdbdbd;
-            text-decoration: none;
-
-}
-.buttone:hover{
-            background-color:  rgb(57, 52, 52);
-            opacity: 0.8;
-            color: #cdbdbd;
-            text-decoration: none;
-            
-        }
-    </style>
+  }
+  a:hover {
+    background-color: rgb(57, 52, 52);
+    opacity: 0.8;
+    color: #cdbdbd;
+    text-decoration: none;
+  }
+  .buttone:hover {
+    background-color: rgb(57, 52, 52);
+    opacity: 0.8;
+    color: #cdbdbd;
+    text-decoration: none;
+  }
+</style>
 
 {% endblock %}
