@@ -1,0 +1,161 @@
+{% extends 'base.html'%} {% block title %} Schedule {% endblock %} {% block link
+%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/schedule.css') }}" />
+<script src="{{url_for('static', filename='/scripts/calendar.js')}}"></script>
+{% endblock %} {%block homeNav%} {% endblock %} {% block container %}
+<button id="createEventBtn" onclick="hideEventForm()">Create new event</button>
+<section id="sectionToCreateNewEvent">
+
+    <form action="{{ url_for('schedule') }}" method="POST" onsubmit="close()">
+        <div class="closeCtn"><button id="closeBtn" type="button" onclick="closeForms()"><img
+                    src="static\images\close.png" alt=""></button></div>
+        {{eventForm.name(placeholder="Add Title",class="textbox") }}
+        <br>
+        {{ eventForm.startDate (placeholder="DD/MM/YYYY",class="textbox") }}
+        <br>
+        {{ eventForm.endDate( placeholder="DD/MM/YYYY",class="textbox") }}
+        <br>
+        {{eventForm.example() }}
+        {{ eventForm.submit }}
+        <br>
+        {{ eventForm.csrf_token }}
+    </form>
+</section>
+
+<section class="calendar-section">
+    <div class="calendar-wrapper">
+        <header class="date-header">
+            <div class="date">
+                <button class="button switch-left" onclick="nextDay (-1)">&lt</button>
+                <h1 id="date-display"></h1>
+                <button class="button switch-right" onclick="nextDay (+1)">&gt</button>
+                <div class="switch-left"></div>
+            </div>
+        </header>
+
+        <div class="calendar">
+
+            <div class="col-header"><span></span></div>
+
+
+
+            <div class="row-1 rows">
+                <div class="col-header">12AM</div>
+            </div>
+
+            <div class="row-2 rows">
+                <div class="col-header ">1AM</div>
+
+            </div>
+
+            <div class="row-3 rows">
+                <div class="col-header">2AM </div>
+            </div>
+
+            <div class="row-4 rows">
+                <div class="col-header">3AM</div>
+            </div>
+            <div class="row-5 rows">
+                <div class="col-header">4AM</div>
+            </div>
+            <div class="row-6 rows">
+                <div class="col-header">5AM</div>
+            </div>
+            <div class="row-7 rows">
+                <div class="col-header">6AM</div>
+            </div>
+            <div class="row-8 rows">
+                <div class="col-header">7AM</div>
+            </div>
+            <div class="row-9 rows">
+                <div class="col-header">8AM</div>
+            </div>
+            <div class="row-10 rows">
+                <div class="col-header">9AM</div>
+            </div>
+
+
+            <div class="row-11 rows">
+                <div class="col-header">10AM</div>
+            </div>
+            <div class="row-12 rows">
+                <div class="col-header">11AM</div>
+            </div>
+            <div class="row-13 rows">
+                <div class="col-header">12PM</div>
+            </div>
+            <div class="row-14 rows">
+                <div class="col-header">1PM</div>
+            </div>
+            <div class="row-15 rows">
+                <div class="col-header">2PM</div>
+            </div>
+            <div class="row-16 rows">
+                <div class="col-header">3PM</div>
+            </div>
+            <div class="row-17 rows">
+                <div class="col-header">3PM</div>
+            </div>
+            <div class="row-18 rows">
+                <div class="col-header">4PM</div>
+            </div>
+            <div class="row-19 rows">
+                <div class="col-header">5PM</div>
+            </div>
+            <div class="row-20 rows">
+                <div class="col-header">6PM</div>
+            </div>
+            <div class="row-21 rows">
+                <div class="col-header">7PM</div>
+            </div>
+            <div class="row-22 rows">
+                <div class="col-header">8PM</div>
+            </div>
+            <div class="row-23 rows">
+                <div class="col-header">9PM</div>
+            </div>
+            <div class="row-24 rows">
+                <div class="col-header">10PM</div>
+            </div>
+            <div class="row-25 rows">
+                <div class="col-header">11PM</div>
+            </div>
+
+        </div>
+
+
+</section>
+
+
+{% endblock %}
+
+<!-- <div class="date" id="current-date">Date</div>
+        <span class="dayOfWeek" id="Mon"> Maonday </span>
+        <span class="dayOfWeek" id="Tue"> Tuesday </span>
+        <span class="dayOfWeek" id="Wed"> Wednesday</span>
+        <span class="dayOfWeek" id="Thu"> Thurday </span>
+        <span class="dayOfWeek" id="Fri"> Friday </span>
+        <span class="dayOfWeek" id="Sat"> Saturday </span>
+        <span class="dayOfWeek" id="Sun"> Sunday </span>
+           </div>
+            <div class="row-25 rows">
+                <div class="col-header">11PM</div>
+            </div>
+            <div class="row-26 rows">
+                <div class="col-header">12PM</div>
+            </div>
+        </div><div class="events"> -->
+<!-- <div class="hour" id="1AM">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+        </div> -->

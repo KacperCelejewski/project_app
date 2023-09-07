@@ -1,5 +1,16 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, IntegerField, HiddenField
+from wtforms import (
+    StringField,
+    PasswordField,
+    SubmitField,
+    IntegerField,
+    HiddenField,
+    TextAreaField,
+    DateTimeField,
+    DateTimeLocalField,
+    DateField,
+    RadioField,
+)
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from project.model import User
 
@@ -45,6 +56,36 @@ class Loginform(FlaskForm):
     submit = SubmitField(label="Sign in")
 
 
+class editForm(FlaskForm):
+    title = StringField(label="Title")
+    deadline = DateField("Start Date", format="%Y-%m-%d")
+    deadlineEnd = DateField("Due Date", format="%Y-%m-%d")
+    description = TextAreaField(label="Description")
+    submitBtn = SubmitField(label="Edit")
+
+
 class create_project(FlaskForm):
-    title = StringField(label="title")
+    title = StringField(label="Title")
+    deadline = DateField("Start Date", format="%Y-%m-%d")
+    deadlineEnd = DateField("End Date", format="%Y-%m-%d")
+    description = TextAreaField(label="Description")
     submite = SubmitField(label="Apply")
+
+
+class addForm(FlaskForm):
+    surrname = StringField(label="Choose your new Teammate!")
+    submit = SubmitField(label="Add")
+
+
+class IssuesForm(FlaskForm):
+    issue_name = StringField(label="issue_name")
+    content = TextAreaField(label="content")
+    submite = SubmitField(label="Apply")
+
+
+class addEvent(FlaskForm):
+    name = StringField()
+    startDate = DateTimeLocalField(format="%Y-%m-%dT%H:%M")
+    endDate = DateTimeLocalField(format="%Y-%m-%dT%H:%M")
+    example = RadioField(choices=[("value1", "Event"), ("value2", "Task")])
+    submit = SubmitField(label="Save")

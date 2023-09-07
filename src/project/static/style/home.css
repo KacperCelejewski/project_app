@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+.welcome-section {
+  background: #ffa9e7;
+  overflow: hidden;
+  display: grid;
+  padding: 25px;
+ width: 100%;
+  
+  grid-template-columns:50% 50%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "banner       banner"
+    "description  optoon"
+    "description  optoon"
+    "description  optoon"
+    "description  optoon"
+    "description  optoon"
+    "description  optoon"
+    "primary-text primary-text";
+    gap: 10px;
+   
+}
+#navOption-slogan-header{
+    font-size: 2rem;
+}
+h1, h2, h3{
+    font-family: 'Roboto', sans-serif;
+}
+.content-section{
+    background-color: #ffa9e7;
+    display: grid;
+    grid-template-columns:70% 30%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "primary-header primary-header"
+    "image          list";
+    row-gap: 20px;
+    
+}
+.primary-header{
+    text-align: center;
+    grid-area: primary-header;
+    color: #2a2d43;
+}
+.image{
+    
+    width: 100%;
+    grid-area: image;
+    padding: 20px;
+    background-color: #ffffffee;
+}
+.image img{
+
+    margin: 10px 0 10px 0;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.45);
+}
+.list{
+    background-color: #2a2d43;
+    grid-area: list;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.image, .list{
+    border-bottom: #FFF solid 3px;
+}
+.intro, .primary-header{
+    padding-top: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.primary-header p{
+    text-align: center;
+    color: #a52ccb;
+}
+.list ul{
+    height: 100%;
+  
+    margin:0;
+}
+.list ul li{
+    border-bottom: #FFF 1px solid;
+    height: 20%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.welcome-section  img {
+  width: 100%;
+  border-radius: 13px;
+}
+.banne {
+  grid-area: banner;
+  background-color: #000000;
+  color: #fff;
+font-size: 30px;
+  height:69px;
+  width: 100%;
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.de {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.description {
+  background-color: #2a2d43;
+  padding: 20px;
+  grid-area: description;
+  border: 2px solid #fff;
+  border-radius: 13px;
+  max-height: 100%;
+  
+}
+.description h1 {
+  margin-top: 20px;
+}
+.navOptions {
+  grid-area: optoon;
+  background-color: #2a2d43;
+
+  
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 13px;
+}
+.sm {
+  background-color: #2a2d43;
+  border: 2px solid #fff;
+  grid-area: social;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 13px;
+}
+.technologies {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
+  flex-direction: row;
+}
+.come h3{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom:20px;
+}
+.tech img {
+  width: 50px;
+  height: 50px;
+}
+.tech{
+    display: flex;
+    align-items:  center;
+    flex-direction: column;
+  
+
+}
+.python{
+    margin-top: 6px;
+text-align: center;
+width: 80px;
+background-color: #a62ccb21;
+border-radius: 4px;
+}
+hr {
+  width: 70%;
+  margin: 0 auto;
+  background-color: #ffa9e7;
+}
+header {
+  text-align: center;
+  margin-top: 20px;
+}
+.come {
+  background-color: #ffa9e7;
+  color: #2a2d43;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+.primary {
+  border: #fff solid 2px;
+  margin: 20px;
+  background-color: #ffa9e7;
+  color: #2a2d43;
+  padding: 13px;
+  border-radius: 13px;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  align-items: center;
+}
+
+.gradientHeader{
+    display: block;
+  padding: 30px;
+  width: fit-content;
+  font-size: 72px;
+  background: -webkit-linear-gradient(#ffa9e7, #a52ccb);
+  background: linear-gradient(#ffa9e7, #a52ccb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  line-height: 5rem;
+  
+
+}
+
+

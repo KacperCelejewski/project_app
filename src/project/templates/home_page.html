@@ -1,28 +1,104 @@
-{% extends 'base.html'%}
-{% block title %} 
-Home Page
-{% endblock %}
-{% block con %}
+{% extends 'base.html'%} {% block title %} Home Page {% endblock %} {% block
+link %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/home.css') }}" />
 
-<style>
-    .log_out_but{
-        
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-</style> 
-<div style="display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-">
-    <h1 style="display:flex;text-align: center ;">Home page</h1>
+{% endblock %} {%block homeNav%}
+
+{% endblock %} {% block container %}
+<section class="welcome-section">
+  <div class="banne">Leave notes, try ProjectApp</div>
+  <div class="description">
+    <img src="static\images\heroImg.svg" alt="" />
+    <div class="de">
+      <h1 id="title">Project App</h1>
+      <p id="info">
+        Welcome to Project App, where project management meets seamless
+        collaboration. Say goodbye to chaos and hello to organized success. With
+        Project App, you're equipped with a comprehensive toolkit designed to
+        simplify project creation, streamline management, and elevate team
+        synergy.
+      </p>
+    </div>
+  </div>
+
+  <div class="navOptions">
+    <h1 id="navOption-slogan-header">Let ProjectApp keep your mind clear</h1>
+    <div class="option">Keep your mind clear</div>
+    <div class="option">Dont lose your time</div>
+    <div class="option">Share your progress</div>
+    <div class="option">Orginize your life</div>
+    <div class="option">Bulid your dream team</div>
+  </div>
+  </div>
+
+</section>
+<div class="first-header">
+  <h1 class="gradientHeader">
+    Discover the Ultimate Project Management and Collaboration Solution!
+  </h1>
 </div>
 
-{% endblock %}
+<section class="content-section">
 
-{% block container %}
-    <h3></h3>
-{% endblock %}
+  <div class="primary-header">
+    <h2>Unlock the Power of Efficiency and Team Synergy with Project App.</h2>
+    <br />
+    <p>
+      Are you tired of juggling multiple tools and struggling to keep your
+      projects on track? Look no further! Project App is here to revolutionize
+      the way you handle projects, streamline your processes, and empower your
+      teams.
+    </p>
+    <br />
+  </div>
+  <div class="image">
+    <img width="500" src="static\images\success.svg" alt="" />
+  </div>
+  <div class="list">
+    <ul>
+      <li>Project Creation</li>
+      <li>Management</li>
+      <li>Collaboration</li>
+      <li>Team Collaboration</li>
+      <li>Time Savings</li>
+    </ul>
+  </div>
 
+
+</section>
+
+<section class="find-project-section">
+  <div class="intro">
+    <h2>Are you looking for a learning team?</h2>
+    <p>1000+ develeopers are looking for new challenges</p>
+  </div>
+  <hr />
+  <div class="newTean">
+    <div class="come">
+      <h3>Technologies</h3>
+      <div class="technologies">
+        <div class=" tech">
+          <img src="static/images/python.png" alt="" />
+          <div class="python">Python</div>
+        </div>
+        <div class=" tech"><img src="static/images/java.png" alt="" />
+          <div class="python">Java</div>
+        </div>
+        <div class=" tech"><img src="static/images/js.png" alt="" />
+          <div class="python">Java Script</div>
+        </div>
+        <div class="tech">
+          <img src="static/images/c-sharp.png" alt="" />
+          <div class="python">C#</div>
+        </div>
+        <div class="c++ tech"><img src="static/images/c-.png" alt="" />
+          <div class="python">C++</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
+</main>

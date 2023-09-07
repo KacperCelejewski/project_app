@@ -1,69 +1,141 @@
-{% extends 'base.html' %}
-{% block title %}
-    Your Projects
+{% extends 'base.html' %} {% block title %} Your Projects {% endblock %} {%
+block link %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/project.css') }}" />
+
 {% endblock %}
 {%block page%}
 
-<style>
 
 
-</style>
-<h1 style="display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-padding: 10px;
-margin:10px
-">Your Projects</h1>
+{%endblock%}
+{%block homeNav%}
+<li class="nav_element">
+  <a class="nav_link" href="{{ url_for('home_page')}}">Home</a>
+</li>
+
 
 {%endblock%}
 {% block container %}
-<a href="{{ url_for('n_project') }}" class="buttone">Create new project</a>
 
-<h2>Projects list: </h2>
-{%for project in projects%}
-<ul>
-    <button class="buttone">
-    {{project}}
-    </button>
-</ul>
-{%endfor%}
 
-    <style>
-        .buttone{
-            border: 1px solid black;
-            font-size: 26px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            background-color: #cdbdbd;
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            border-radius:7px ;
-            display: flex;
-            opacity: 1;
-            transition: opacity 0.15s ease-in-out;
-            transition: background-color 0.15s ease-in-out;
-            width: fit-content;
-            padding: 5px;
-        }
-a{
-    color: rgb(57, 52, 52);
-    
-}
-a:hover{
-    background-color:  rgb(57, 52, 52);
-            opacity: 0.8;
-            color: #cdbdbd;
-            text-decoration: none;
+<div class="head">
 
-}
-.buttone:hover{
-            background-color:  rgb(57, 52, 52);
-            opacity: 0.8;
-            color: #cdbdbd;
-            text-decoration: none;
-            
-        }
-    </style>
+  <h2>My Projects</h2>
+</div>
+<div class="filterGroup">
+  <span class="filters" id="filterBy">Filter by</span>
+  <span onclick="filterBy(this)" class="filters" id="In Progress">In Progress</span>
+  <span onclick="filterBy(this)" class="filters" id="Completed">Completed</span>
+  <span onclick="filterBy(this)" class="filters" id="Cancelled">Cancelled</span>
+  <span onclick="filterBy(this)" class="filters" id="Edited">Edited</span>
+</div>
+<hr>
+<div class="projectList">
+  <div class="coontainer">
+    {% for project in projects %}
 
+    <div class="window hidden" id="AddMemberWindow{{project.id}}">
+      <div class="top">
+        <div class="editTitle">{{project.title}}</div>
+        <div class="x"><i onclick="closeEdit({{project.id}},'AddMemberWindow{{project.id}}')" id="xrightAdd"
+            class="fa-sharp fa-solid fa-x"></i></div>
+      </div>
+      <form action="{{ url_for('addUser', project_id=project.id) }}" method="POST">
+        {{ add.surrname.label() }}
+        <div class="searchbar">
+          {{ add.surrname(class="form-control",maxlength="50", placeholder="Surrname" )}}
+          <i class="fas fa-search"></i>
+        </div>
+        {{ add.submit(class="btn btn-lg btn-block btn-primary") }}
+        <br>
+        {{ form.csrf_token }}
+      </form>
+    </div>
+
+    {% endfor %}
+    <table class="table">
+      <tr>
+        <th onclick="sortTable()">Project <i class="fa-solid fa-sort-down"></i></th>
+        <th>Status <i class="fa-solid fa-sort-down"></i></th>
+        <th>Author <i class="fa-solid fa-sort-down"></i></th>
+        <!--<th>Description <i class="fa-solid fa-sort-down"></i></th>-->
+        <th>Due date <i class="fa-solid fa-sort-down"></i></th>
+        <th>Time to end <i class="fa-solid fa-sort-down"></i></th>
+        <th>Members</th>
+        <th> </th>
+      </tr>
+      {% for project in projects %}
+
+
+      <div class="window hidden" id="projectEditWindow{{project.id}}">
+        <div class="top">
+          <div class="editTitle">{{project.title}}</div>
+          <div class="x"><i onclick="closeEdit({{project.id}},'projectEditWindow{{project.id}}')" id="xright"
+              class="fa-sharp fa-solid fa-x"></i></div>
+        </div>
+
+        <form action="{{ url_for('edit', project_id=project.id) }}" method="POST" class="edit-form">
+          {{ form.title.label() }}
+          {{ form.title(class="form-control", placeholder="Title") }}
+          <br>
+
+          {{ form.deadline.label() }}
+          {{ form.deadline(class="form-control auto-height ", placeholder="DD/MM/YYYY") }}
+          <br>
+          {{ form.deadlineEnd.label() }}
+          {{ form.deadlineEnd( id ="formaa",class="form-control auto-height", placeholder="DD/MM/YYYY") }}
+          <br>
+          {{ form.description.label() }}
+          {{ form.description(class="form-control auto-height", placeholder="Description") }}
+          <br>
+          {{ form.submitBtn(id = "btt",class="btn btn-lg btn-block btn-primary") }}
+          <br>
+          {{ form.csrf_token }}
+          <div class="x" onclick="closeEdit({{project.id}})">Close</di>
+        </form>
+
+      </div>
+
+      <tr class="radius">
+
+        <td>
+          <b class="title">{{project.title}}</b>
+          <div class="description">{{project.description}}</div>
+        </td>
+        <td class="status" id="status{{project.id}}">{{project.status}}</td>
+        <td>{{project.author}}</td>
+        <!--<td>{{project.description}}</td>-->
+        <td>{{project.deadlineEnd}}</td>
+        <td>{{timeDict[project.id]}} days</td>
+        <td>{% for user in project.users %}
+          {{user.name}}<br>
+          {% endfor %}
+        </td>
+        <div class="actionMenu">
+          <td><img id="dropDots{{project.id}}" onclick="dropdown({{project.id}})" style="width: 15px;"
+              src="static/menu.png" alt="">
+            <div class="dropdown-content" id="menu{{project.id}}">
+              <a onclick="changeStatus(this.id,{{project.id}})" id="completed" href="">Mark as completed</a>
+              <a onclick="changeStatus(this.id,{{project.id}})" id="delete" href="">Cancel</a>
+              <a onclick="changeStatus(this.id,{{project.id}});stayAfterLoad({{project.id}})" id="edit"
+                href="{{ url_for('edit', project_id=project.id) }}">Edit</a>
+              <a onclick="changeStatus(this.id,{{project.id}})" id="addMember" href="{{ url_for('projects_page') }}">add
+                member</a>
+            </div>
+        </div>
+        </td>
+
+      </tr>
+
+      {% endfor %}
+    </table>
+
+  </div><a href="{{ url_for('new_project') }}" class="buttone">Create new project</a>
+</div>
+
+
+<script src="{{ url_for('static', filename='scripts/task.js') }}"></script>
 {% endblock %}

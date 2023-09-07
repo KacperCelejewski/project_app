@@ -1,5 +1,9 @@
 {% extends 'users_project.html' %}
-
+{%block homeNav%}
+<li class="nav_element">
+        <a class="nav_link" href="{{ url_for('home_page')}}">Home</a>
+</li>
+{%endblock%}
 {% block container %}
 
 <style>
@@ -7,18 +11,36 @@
         width: 50%;
         margin: 0 auto;
     }
+
 </style>
 
 <form method="POST" class="form-register" style="color:white">
     <div class="formy">
         {{ form.title.label() }}
-        <br>
         {{ form.title(class="form-control", placeholder="Title") }}
+        <br>
+      
+        
+        
+    
+        
+        {{ form.deadline.label() }}
+      
+        {{ form.deadline(class="form-control auto-height", placeholder="DD/MM/YYYY") }}
+        <br>
+        {{ form.deadlineEnd.label() }}
+      
+        {{ form.deadlineEnd(class="form-control auto-height", placeholder="DD/MM/YYYY") }}
+        <br>
+        {{ form.description.label() }}
+      
+        {{ form.description(class="form-control auto-height", placeholder="Description") }}
         <br>
         <hr width="50%" color="white" size="5">
 
         {{ form.submite(class="btn btn-lg btn-block btn-primary") }}
         <br>
+        
         {{ form.csrf_token }}
 
 

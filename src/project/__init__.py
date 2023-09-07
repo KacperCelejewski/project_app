@@ -2,7 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-
+from flask import Flask, Response
+from flask_principal import Principal, Permission, RoleNeed
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "09b3b371eb6546919f68bd28"
@@ -18,7 +19,7 @@ app.config.update(
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
-
+principal = Principal(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -30,3 +31,6 @@ def load_user(user_id):
     from project.model import User
 
     return User.query.get(int(user_id))
+
+
+
