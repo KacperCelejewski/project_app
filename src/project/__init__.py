@@ -4,17 +4,16 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask import Flask, Response
 from flask_principal import Principal, Permission, RoleNeed
+from dotenv import load_dotenv
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "09b3b371eb6546919f68bd28"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///users.db"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 
 
 app.config.update(
     dict(
-        SECRET_KEY="09b3b371eb6546919f68bd28",
-        WTF_CSRF_SECRET_KEY="09b3b371eb6546919f68bd28y",
-    )
+        WTF_CSRF_SECRET_KEY=os.environ.get("WTF_CSRF_SECRET_KEY")
 )
 
 db = SQLAlchemy(app)
